@@ -1,0 +1,44 @@
+
+@import '../shared.scss';
+
+.amenities--hotspot {
+    position: absolute;
+}
+
+
+    .amenities--hotspot__btn {
+        width: 40px;
+        height: 40px;
+        background: url(./icon--image.png) no-repeat;
+        background-size: 40px 40px;
+    }
+
+
+    .amenities--hotspot__tmb {
+        display: none; //show with JS
+        position: absolute;
+
+        &, &.bottom-right {
+            left: 45px;
+            top: 0px;
+        }
+
+        &.bottom-left {
+            right: 45px;
+            left: unset;
+            top: 0px;
+        }
+
+        &.top-right {
+            left: 45px;
+            bottom: 0px;
+            top: unset;
+        }
+
+        &.top-left {
+            right: 45px;
+            left: unset;
+            bottom: 0px;
+            top: unset;
+        }
+    } 

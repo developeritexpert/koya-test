@@ -1,0 +1,103 @@
+.residences--menu {
+  position: fixed;
+  top: 400px;  // below navbar
+  right: 200px;
+  z-index: 10; // menu base
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-family: "Brown", sans-serif;
+  min-width: 150px;
+
+  &__toggle {
+    display: block;
+    width: 100%;
+    color: #fff;
+    background: none;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__list {
+    list-style: none; // remove bullets
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative; // for submenu positioning
+      margin-bottom: 8px;
+
+      span {
+        font-size: 18px;
+        display: inline-block;
+        padding: 5px 10px;
+        cursor: default;
+      }
+
+      // Submenu directly below main item
+      & > .residences--menu__sublist {
+        list-style: none; // remove bullets
+        position: absolute;
+        top: 100%; // below parent
+        left: -10px;
+        background: rgba(0, 0, 0, 0.85);
+        border-radius: 4px;
+        padding: 0px 0;
+        min-width: 150px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+
+        li {
+          margin: 0;
+
+          button {
+            display: block;
+            width: 100%;
+            padding: 6px 12px;
+            color: white;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.2); // overlay hover effect
+            }
+/*
+            &.active {
+              background: rgba(255, 255, 255, 0.2);
+              font-weight: bold;
+            }
+            */
+          }
+        }
+      }
+    }
+  }
+}
+
+// Floorplate / level group container
+.residences--level-group-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1050; // default below menu
+}
+
+.residences--level-group-container.active {
+  z-index: 2000; // floorplate + apartments above menu
+}
+
+
+.residences--apartment {
+  z-index: 2100; // above floorplate and menu
+}

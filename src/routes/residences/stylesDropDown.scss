@@ -1,0 +1,105 @@
+
+@import "../../shared/shared.scss";
+
+$fontSize: 17px;
+
+$linkHeight: $fontSize * 1.5;
+$linkOffset: -5px;
+
+$logoHeight: 78px;
+$logoOffset: -5px;
+
+.header {
+    z-index: $coreMenuZIndex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $coreMenuHeight;
+    background: $bkgColour;
+    border-bottom: 2px solid #dcc56b;
+}
+
+
+.header--nav {
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+    .header--nav__li {
+        position: relative;
+        vertical-align: middle;
+    }
+
+
+    .header--dropdown__sub-menu{
+        display: none; //displayed with JS
+        position: absolute;
+        width: 90px;
+        background: $bkgColour;
+        border-radius: 8px;
+        text-align: center;
+        filter: drop-shadow(3px 3px 2px rgb(31, 31, 31));
+    }
+
+
+    .dropdown__link {
+
+        display: block;
+        margin: 0px;
+        // padding: 40px 25px;
+        color: $highlightTextColour;
+        // text-transform: uppercase;
+        text-decoration: none;
+        @include font-secondary;
+        transition: all 0.3s ease-out;
+        font-size: $fontSize;
+        &:hover {
+            color: $primaryTextColour;
+        }
+    }
+
+
+        .header--nav__link-in-sub-menu {
+            @extend .dropdown__link;
+            height: auto;
+        }
+
+
+    .header--nav__link-logo { 
+        $logoPaddingTop: ( ($coreMenuHeight - $logoHeight) / 2 ) + $logoOffset;
+        $logoPaddingBottom: ( ($coreMenuHeight - $logoHeight) / 2 ) - $logoOffset;
+
+        @extend .dropdown__link;
+        padding-top: #{ $logoPaddingTop };
+        padding-bottom: #{ $logoPaddingBottom };
+        
+        img {
+            max-height: $logoHeight;
+            width: auto;
+        }
+    }
+
+
+    .header--nav__link-selected {
+        @extend .dropdown__link;
+        &:hover {
+            color: $primaryTextColour;
+        }
+        color: $primaryTextColour;
+    }
+
+    .dropdown-sub-menu-item {
+        color: $highlightTextColour;
+        font-size: $fontSize;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-left: -20px;
+        padding-bottom: 10px;
+        &:hover {
+            color: $primaryTextColour;
+        }
+    }

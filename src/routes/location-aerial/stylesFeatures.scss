@@ -1,0 +1,107 @@
+
+@import "../../shared/shared.scss";
+
+
+.features--rotations {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.features--button__rotate {
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	width: 61px;
+	height: 60px;
+	cursor: pointer;
+    transition: all 0.3s ease-out;
+	transform-origin: center center;
+	&:focus {
+		outline: none;
+	}
+}
+
+
+	.features--button__rotate-left {
+		@extend .features--button__rotate;
+		right: 20px;
+		&:hover {
+			transform: rotate(40deg);
+		}
+	}
+
+
+	.features--button__rotate-right {
+		@extend .features--button__rotate;
+		left: 20px;
+		&:hover {
+			transform: rotate(-40deg);
+		}
+	}
+
+
+.features--hotspots-container {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+
+.features--hotspot {
+	position: absolute;
+}
+
+
+	.features--hotspot__btn {
+		width: 40px;
+		height: 40px;
+		background: url(./icon-plus.png) no-repeat;
+		background-size: 40px 40px;
+	}
+
+	.features--hotspot__btn:hover {
+		width: 40px;
+		height: 40px;
+		background: url(./icon-plus-hover.png) no-repeat;
+		background-size: 40px 40px;
+	}
+
+
+	.features--hotspot__tmb {
+		display: none; //show with JS
+		position: absolute;
+	
+		&, &.bottom-right {
+			left: 45px;
+			top: 0px;
+		}
+	
+		&.bottom-left {
+			right: 45px;
+			left: unset;
+			top: 0px;
+		}
+	
+		&.top-right {
+			left: 45px;
+			bottom: 0px;
+			top: unset;
+		}
+	
+		&.top-left {
+			right: 45px;
+			left: unset;
+			bottom: 0px;
+			top: unset;
+		}
+	} 
+	
+	.features--hotspot__tmb {
+		display: none; //show with JS
+		position: absolute;
+		left: -120px;
+		bottom: 50px;
+	}
+

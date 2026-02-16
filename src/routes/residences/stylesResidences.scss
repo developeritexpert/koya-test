@@ -1,0 +1,355 @@
+@import "../../shared/shared.scss";
+
+//////////////////////////////////////////////////
+// MIXINS
+//////////////////////////////////////////////////
+
+@mixin rotate-btn {
+  position: absolute;
+  top: 80%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin hotspot-submenu {
+  position: absolute;
+  left: 0;
+  top: 80px;
+  width: 100%;
+  display: none;
+  padding-top: 5px;
+  border-radius: 0 0 10px 10px;
+  background: rgba(134, 133, 133, 0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+//////////////////////////////////////////////////
+// ROTATION
+//////////////////////////////////////////////////
+
+.residences--rotations {
+  position: absolute;
+  top: 100px;
+  left: 0;
+}
+
+.residences--rotation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.residences--button__rotate-left {
+  @include rotate-btn;
+  right: 100px;
+
+  &:hover {
+    transform: rotate(-40deg);
+  }
+}
+
+.residences--button__rotate-right {
+  @include rotate-btn;
+  right: 200px;
+
+  &:hover {
+    transform: rotate(40deg);
+  }
+}
+
+//////////////////////////////////////////////////
+// HOTSPOTS
+//////////////////////////////////////////////////
+
+.residences--hotspots-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.residences--hotspot {
+  position: absolute;
+  width: 330px;
+}
+
+.residences--hotspot__btn,
+.residences--hotspot__btn-type {
+  position: absolute;
+  border-radius: 10px;
+  color: white;
+  font-family: "Brown";
+  text-align: left;
+  background-repeat: no-repeat;
+  background-position: 4px 4px;
+  background-size: 30px;
+}
+
+.residences--hotspot__btn {
+  z-index: 7;
+  width: 100%;
+  height: 80px;
+  line-height: 2rem;
+  padding: 5px 5px 10px 45px;
+  font-size: 20px;
+  background-color: rgba(255, 9, 9, 0.9);
+  background-image: url(./icon-plus-black.png);
+}
+
+.residences--hotspot__btn-type {
+  z-index: 2;
+  width: 60%;
+  height: 40px;
+  padding: 5px 5px 10px 45px;
+  font-size: 18px;
+  background-color: black;
+  background-image: url(./icon-plus-black.png);
+}
+
+.residences--hotspot__btn-active {
+  background-image: url(./icon-plus-hover-black.png);
+  color: $highlightTextColour;
+}
+
+.residences--hotspot__sub-menu {
+  @include hotspot-submenu;
+  z-index: 5;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 5px 0;
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+.residences--hotspot__sub-menu-type {
+  @include hotspot-submenu;
+  width: 60%;
+}
+
+.residences--hotspot__sub-menu-item,
+.residences--hotspot__sub-menu-item-inactive {
+  display: block;
+  width: 100%;
+  padding-left: 45px;
+  font-family: "Brown";
+  font-size: 18px;
+  text-align: left;
+  transition: color 0.2s ease-out;
+}
+
+.residences--hotspot__sub-menu-item {
+  color: white;
+}
+
+.residences--hotspot__sub-menu-item-inactive {
+  color: grey;
+
+  &:hover {
+    color: $highlightTextColour;
+  }
+}
+
+//////////////////////////////////////////////////
+// LEVEL GROUP / MODALS
+//////////////////////////////////////////////////
+
+.residences--level-group,
+.residences--apartment {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: $frgColour;
+  z-index: 2000;
+}
+
+.residences--level-group {
+  z-index: $coreMenuZIndex + 1;
+}
+
+.residences--apartment {
+  z-index: $coreMenuZIndex + 2;
+}
+
+.residences--level-group__close-btn,
+.residences--apartment__close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  background: url(./btn--close.png) no-repeat center;
+  background-size: 40px;
+  transition: opacity 0.3s ease-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+//////////////////////////////////////////////////
+// APARTMENT BUTTONS
+//////////////////////////////////////////////////
+
+.residences--apartment-btn {
+  position: absolute;
+  z-index: 2100; // above floorplate
+  width: 40px;
+  height: 40px;
+  background: url(./icon-plus.png) no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.2);
+    background: url(./icon-plus-hover.png) no-repeat center;
+    background-size: contain;
+  }
+}
+
+
+//////////////////////////////////////////////////
+// APARTMENT VIEWS
+//////////////////////////////////////////////////
+
+.residences--apartment__views {
+  position: absolute;
+  bottom: -160px;
+  width: 100%;
+  height: 200px;
+  background: $bkgColour;
+}
+
+.residences--apartment__views-btn {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background: $bkgColour;
+  font-family: "korolev";
+  font-size: 16px;
+}
+
+.view-toggle-btn {
+  position: absolute;
+  bottom: 98%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2b2a28;
+  padding: 13px 30px 4px;
+  border-radius: 15px 15px 0 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  img {
+    transform: rotate(180deg);
+    transition: transform 0.5s;
+  }
+}
+
+.residences--apartment__views-tmbs {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  list-style: none;
+}
+
+.residences--apartment__views-tmb {
+  display: inline-block;
+  width: 150px;
+  margin: 0 20px 25px 0;
+  transition: transform 0.3s ease-out;
+
+  h2 {
+    margin-bottom: 5px;
+    color: $primaryTextColour;
+    @include font-primary;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}
+
+//////////////////////////////////////////////////
+// BUILDING CONTROLS
+//////////////////////////////////////////////////
+
+.residences--building-container {
+  position: relative;
+  top: 775px;
+  left: 340px;
+}
+
+.residences--building-Day-Night-container {
+  position: relative;
+  bottom: -200px;
+  left: 1335px;
+  width: 140px;
+  height: 40px;
+  background: black;
+  border-radius: 8px;
+}
+
+.residences--building__btn_Day_Night {
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  font-family: "Brown";
+  font-size: 20px;
+  color: $primaryTextColour;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.2s ease-out;
+
+  &:hover {
+    color: $highlightTextColour;
+  }
+}
+
+.residences--building__btn_Day_Night__active {
+  color: $highlightTextColour;
+}
+
+.residences--building__btn,
+.residences--building__btnSelected {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  padding: 5px 5px 10px;
+  border-radius: 8px;
+  font-family: "Brown";
+  font-size: 20px;
+  background: $bkgColour;
+  color: $primaryTextColour;
+}
+
+.residences--building__btn {
+  color: $highlightTextColour;
+  transition: color 0.2s ease-out;
+
+  &:hover {
+    color: $primaryTextColour;
+  }
+}
+
