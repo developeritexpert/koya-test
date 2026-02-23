@@ -8,7 +8,6 @@ import overlayReducer from '../app/components/overlay';
 export default combineReducers( {
   aerialMap: aerialMapReducer,
   residences: residencesReducer,
-
   enlarged: enlargedReducer,
   overlay: overlayReducer,
 

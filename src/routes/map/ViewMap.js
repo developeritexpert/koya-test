@@ -221,7 +221,7 @@ function MapContent() {
         >
           <img
             className="shared--img-fill-map aerial-map--bkg"
-            src="img/location-map/bkg--aerial-map.jpg"
+            src="img/location-map/location-map-00.svg"
             alt="Bkg"
             draggable={false}
             onLoad={onImgLoad}

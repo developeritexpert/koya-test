@@ -6,7 +6,7 @@ import { dataRoutes } from '../../routes/dataRoutes';
 import './stylesHeader.scss';
 
 
-export default function ViewHeader () {    
+export default function ViewHeader () {
     const getLinks = () => {
         const links = [];
         let currRoute;
@@ -40,7 +40,7 @@ export default function ViewHeader () {
                 <ul className='header--nav-ui'>
                     <li className='header--nav__li'>
                         <NavLink className='header--nav__link-logo' to='/'>
-                            <img src='./img/interface/logo--640bourkest-small.png' width='250' height='auto' alt='640 Bourke St Logo' />
+                            <img src='./img/interface/logo--koya-small.png' width='250' height='auto' alt='Koya Logo' />
                         </NavLink>
                     </li>
                     { getLinks() }

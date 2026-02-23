@@ -6,7 +6,7 @@ import ViewGalleryDesign from './design/ViewGalleryDesign';
 import ViewGalleryTeam from './team/ViewGalleryTeam';
 import ViewMap from './map/ViewMap';
 import ViewResidences from './residences/ViewResidences';
-import {interiorFinishes01, interiorFinishes02, interiorFinishes03, design01, design02, design03, galleryRenders01, Team01, InteriorImages01, InteriorImages02, InteriorImages03} from './gallery/data/gallery';
+import {interiorFinishes01, design01, design02, design03, design04, design05, galleryRenders01, Team01, InteriorImages01, InteriorImages02, InteriorImages03, InteriorImages04, InteriorImages05, InteriorImages06, InteriorImages07} from './gallery/data/gallery';
 import ViewGalleryRollOver from './gallery/ViewGalleryRollOver';
 
 export const dataRoutes = [
@@ -38,7 +38,7 @@ export const dataRoutes = [
                 title: 'Design',
                 path: '/design',
                 component: ViewGalleryDesign,
-                data: [design01, design02, design03],
+                data: [design01, design02, design04, design03, design05],
         },
 
     {
@@ -48,14 +48,14 @@ export const dataRoutes = [
                 title: 'Images',
                 path: '/interior-images',
                 component: ViewGalleryInteriorImages,
-                data: [InteriorImages01, InteriorImages02, InteriorImages03],
+                data: [InteriorImages01, InteriorImages02, InteriorImages03, InteriorImages04, InteriorImages05, InteriorImages06, InteriorImages07],
             },
 
                         {
                 title: 'Finishes',
                 path: '/interior-finishes',
                 component: ViewGalleryInteriorFinishes,
-                data: [interiorFinishes01, interiorFinishes02, interiorFinishes03,],
+                data: [interiorFinishes01],
             },
         ]
     },
@@ -71,7 +71,7 @@ export const dataRoutes = [
         title: 'Gallery',
         path: '/gallery-renders',
         component: ViewGalleryRollOver,
-        data: [galleryRenders01,],
+        data: [galleryRenders01],
     },
 
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { selectEnlarged } from '../../shared/enlarged/';
 import LoadContainer from '../../shared/LoadContainer';
 import './gallery.scss';
-import GalleryItem from './GalleryItem';
+import GalleryItem from '../../app/components/gallery/GalleryItem';
 
 
 function ConnectViewGallery({

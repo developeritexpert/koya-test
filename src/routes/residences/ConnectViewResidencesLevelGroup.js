@@ -46,7 +46,7 @@ function ViewResidencesLevelGroup({ residences, closeLevelGroup, selectApartment
                 selectApartment(apt.type);
                 }}
           >
-            {apt.title}
+            {/*apt.title*/} 
           </button>
         ))}
 

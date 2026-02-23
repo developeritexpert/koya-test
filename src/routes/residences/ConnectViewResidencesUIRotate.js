@@ -39,47 +39,17 @@ function ViewResidencesUIRotate({ currRotation, isAnimating, updateRotation, upd
     <>
       <ButtonResidencesRotate
         className="residences--button__rotate-left"
-        imgRef="./img/interface/btn-rotate-left.png"
+        imgRef="./img/interface/icon-rotate-left-white.png"
         onSelected={() => onRotateSelected('+=18')}
       />
       <ButtonResidencesRotate
         className="residences--button__rotate-right"
-        imgRef="./img/interface/btn-rotate-right.png"
+        imgRef="./img/interface/icon-rotate-right-white.png"
         onSelected={() => onRotateSelected('-=18')}
       />
     </>
   );
 }
-
-
-
-/*
-function ViewResidencesUIRotate ( { currRotation, isAnimating, updateRotation, updateIsAnimating } ) {
-
-  const onRotateSelected = (increment) => {
-    if (!isAnimating) {
-      updateIsAnimating(true);
-      rotateResidences(increment, currRotation, onResidencesRotating, onBuildingRotationComplete);
-    }
-  }
-
-  const onResidencesRotating = (rotation) => {
-    updateRotation(rotation);
-  }
-
-  const onBuildingRotationComplete = () => {
-    updateIsAnimating(false);
-  }
-
-  return (
-    <>
-      <ButtonResidencesRotate className='residences--button__rotate-left' imgRef='./img/interface/btn-rotate-left.png' onSelected={ () => onRotateSelected('+=18') } />
-      <ButtonResidencesRotate className='residences--button__rotate-right' imgRef='./img/interface/btn-rotate-right.png' onSelected={ () => onRotateSelected('-=18') }  />
-    </>
-  );
-
-}
-*/
 
 const mapStateToProps = (state) => ({
   currRotation: state.residences.currRotation,

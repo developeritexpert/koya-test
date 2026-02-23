@@ -8,11 +8,11 @@ import "slick-carousel/slick/slick-theme.css";
 const settings = {
   dots: true,
   infinite: true,
-  speed: 1500,
+  speed: 2000,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 5000,
+  autoplaySpeed: 6000,
   arrows: false,
   pauseOnHover: false,
   pauseOnFocus: false,
@@ -33,21 +33,26 @@ export default function ViewHome() {
   }, []);
 
   return (
-    <LoadContainer>
-      <div className="slider--container">
-        <Slick {...settings} ref={slickRef}>
-          {[1, 2,].map((i) => (
-            <div key={i} className="slick-slide-item">
-              <img
-                src={`./img/lifestyle/bkg--lifestyle-${i}.jpg?v=200721`}
-                width="1920"
-                height="1080"
-                alt={`Slide ${i}`}
-              />
-            </div>
-          ))}
-        </Slick>
-      </div>
-    </LoadContainer>
+<LoadContainer>
+  <div className="slider--container">
+    <Slick {...settings} ref={slickRef}>
+      {[1, 2,].map((i) => {
+        const num = String(i).padStart(2, "0"); // 01, 02, 03...
+        return (
+          <div key={i} className="slick-slide-item">
+            <img
+              src={`./img/lifestyle/location-lifestyle-${num}.jpg?v=200721`}
+              loading={i === 1 ? "eager" : "lazy"}
+              decoding="async"
+              alt={`Slide ${num}`}
+              draggable={false}
+            />
+          </div>
+        );
+      })}
+    </Slick>
+  </div>
+</LoadContainer>
+
   );
 }

@@ -33,21 +33,26 @@ export default function ViewHome() {
   }, []);
 
   return (
-    <LoadContainer>
-      <div className="slider--container">
-        <Slick {...settings} ref={slickRef}>
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="slick-slide-item">
-              <img
-                src={`./img/home/bkg--home-${i}.jpg?v=200721`}
-                width="1920"
-                height="1080"
-                alt={`Slide ${i}`}
-              />
-            </div>
-          ))}
-        </Slick>
-      </div>
-    </LoadContainer>
+<LoadContainer>
+  <div className="slider--container">
+    <Slick {...settings} ref={slickRef}>
+      {[1, 2, 3, 4].map((i) => {
+        const num = String(i).padStart(2, "0"); // 01, 02, 03...
+        return (
+          <div key={i} className="slick-slide-item">
+            <img
+              src={`./img/home/home-${num}.jpg?v=200721`}
+              loading={i === 1 ? "eager" : "lazy"}
+              decoding="async"
+              alt={`Slide ${num}`}
+              draggable={false}
+            />
+          </div>
+        );
+      })}
+    </Slick>
+  </div>
+</LoadContainer>
+
   );
 }

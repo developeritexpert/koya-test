@@ -1,11 +1,12 @@
 
 @import '~sanitize.css'; //https://github.com/csstools/sanitize.css
+@import url(https://use.typekit.net/kto6cpu.css);
 
 
-$bkgCanvasColour: #1b1b1b;
-$frgColour: #000000;
-$bkgColour: #2b2a28;
-$primaryTextColour: #818181;
+$bkgCanvasColour: #3f2d20;
+$frgColour: #3f2d20;
+$bkgColour: #f1f0e9;
+$primaryTextColour: #ffffff;
 $highlightTextColour:#ffffff;
 $coreMenuZIndex: 10;
 $enlargedZIndex: 20;
@@ -13,18 +14,18 @@ $coreMenuHeight: 100px;
 $menuTextColour: #ffffff;
 
 @mixin font-primary {
-	font-family: 'Inter', Helvetica, sans-serif;
+	font-family: 'sweet-sans-pro', 'agency FB', Helvetica, sans-serif;
   font-style: normal;
 }
 
-@mixin font-map-menu {
-	font-family: 'Punta', garamond, georgia;
+@mixin font-residences-menu {
+	font-family: 'sweet-sans-pro','agency FB', garamond, georgia;
   font-style: normal;
   font-weight: 550;
-} 
+}
 
 @mixin font-secondary {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: 'sweet-sans-pro','agency FB', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 450;
 }
@@ -45,7 +46,7 @@ body {
   opacity: 1;
   display: block;
 }
-button { 
+button {
   background: none;
   border: none;
   padding: 0;
@@ -91,7 +92,7 @@ button {
   }
 }
 
-  
+
 @keyframes animloader {
   0% {
     box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;

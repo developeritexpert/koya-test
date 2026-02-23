@@ -1,75 +1,69 @@
 @import "../../../shared/shared.scss";
 
-
-.gallery--image {
-    position: absolute;
-    &:after {
-        position: absolute;
-        content: ' ';
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.3);
-        opacity: 0;
-        transition: all 0.3s ease-out;
-    }
-    &:hover {
-        &:after {
-            opacity: 1;
-        }
-    }
-}
-
-.gallery--image-black, .gallery--image {
-    position: absolute;
-    overflow: hidden;
-    &:after {
-        position: absolute;
-        content: ' ';
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        transition: all 0.3s ease-out;
-    }
-    img{
-        transition: all 0.3s ease-out;
-    }
-    &:hover {
-        img{
-            transform: scale(1.2);
-        }
-        &:after {
-            opacity: 1;
-        }
-    }
-}
-
+.gallery--image,
+.gallery--image-black,
 .gallery--image--no-hover {
-    position: absolute;
+    position: absolute; // positions controlled by gallery.js
+    display: inline-block;
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    // Overlay pseudo-element
     &:after {
         position: absolute;
         content: ' ';
-        left: 0px;
-        top: 0px;
+        left: 0;
+        top: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.3);
         opacity: 0;
-        transition: all 0.3s ease-out;
+        transition: opacity 0.3s ease-out;
+        pointer-events: none;
+        z-index: 1; // overlay sits behind caption
     }
-    &:hover {
-        &:after {
-            opacity: 0;
-        }
+
+    &:hover:after {
+        opacity: 1;
     }
 }
 
+// Overlay colors
+.gallery--image:after {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.gallery--image-black:after {
+    background: rgba(0, 0, 0, 0.3); // lighter so caption stays readable
+}
+
+.gallery--image--no-hover:after {
+    content: none;
+}
+
+// Caption inside button (always on top)
 .gallery--caption {
-    @include font-secondary;
-    font-size: '20px';
-    font-weight: '450';
+    position: absolute;
+    inset: 0; // covers entire button
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2; // above overlay
+    margin: 0;
+
+    h1 {
+        @include font-secondary;
+        font-size: 23px;
+        font-weight: 450;
+        color: white; // stays bright
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
 }

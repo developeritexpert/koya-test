@@ -5,15 +5,24 @@ import ButtonResidencesDayNight from './ButtonResidencesDayNight';
 
 const ConnectViewResidencesDayNight = ({ currRotation, toggleDayNight, Day }) => {
     const renderTitle = () => {
-        if (currRotation === 0) return 'Tower 2';
-        if (currRotation === 18) return 'Tower 1';
-        if (currRotation === 36) return 'Tower 4';
-        if (currRotation === 54) return 'Tower 3';
-        return null;
+        const rotation = Math.round(currRotation);
+        if (rotation === 0) return '';
+        if (rotation === 18) return '';
+        if (rotation === 36) return '';
+        if (rotation === 54) return '';
+        return ''; // Empty string to preserve layout
     }
 
-    return renderTitle() && (
+    const title = renderTitle();
+
+    return (
         <div className="residences--building-container">
+            {/* Reserve space for title to prevent container movement */}
+            <div className="residences--building-title" style={{ minHeight: '20px', textAlign: 'center' }}>
+                {}
+            </div>
+
+            {/* Day/Night buttons always visible */}
             <div className="residences--building-Day-Night-container">
                 <ButtonResidencesDayNight
                     data={{ title: 'Day', top: '-3px', left: '-12px' }}

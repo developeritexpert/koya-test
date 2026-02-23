@@ -1,4 +1,5 @@
 @import "../../shared/shared.scss";
+@import "./stylesResidencesMenu.scss";
 
 //////////////////////////////////////////////////
 // MIXINS
@@ -6,9 +7,9 @@
 
 @mixin rotate-btn {
   position: absolute;
-  top: 80%;
-  width: 60px;
-  height: 60px;
+  top: 50%;
+  width: 23px;
+  height: 32px;
   cursor: pointer;
   transform-origin: center;
   transition: transform 0.3s ease-out;
@@ -52,7 +53,7 @@
   right: 100px;
 
   &:hover {
-    transform: rotate(-40deg);
+    transform: rotate(-90deg);
   }
 }
 
@@ -61,7 +62,7 @@
   right: 200px;
 
   &:hover {
-    transform: rotate(40deg);
+    transform: rotate(90deg);
   }
 }
 
@@ -85,7 +86,7 @@
   position: absolute;
   border-radius: 10px;
   color: white;
-  font-family: "Brown";
+  font-family: 'sweet-sans-pro';
   text-align: left;
   background-repeat: no-repeat;
   background-position: 4px 4px;
@@ -146,7 +147,7 @@
   display: block;
   width: 100%;
   padding-left: 45px;
-  font-family: "Brown";
+  font-family: 'sweet-sans-pro';
   font-size: 18px;
   text-align: left;
   transition: color 0.2s ease-out;
@@ -256,7 +257,7 @@
   background: #2b2a28;
   padding: 13px 30px 4px;
   border-radius: 15px 15px 0 0;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: 'sweet-sans-pro', Arial, Helvetica, sans-serif;
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -306,7 +307,7 @@
   left: 1335px;
   width: 140px;
   height: 40px;
-  background: black;
+  background: $menu-background;
   border-radius: 8px;
 }
 
@@ -314,9 +315,9 @@
   position: absolute;
   width: 90px;
   height: 40px;
-  font-family: "Brown";
+  font-family: "sweet-sans-pro";
   font-size: 20px;
-  color: $primaryTextColour;
+  color: grey;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -328,7 +329,7 @@
 }
 
 .residences--building__btn_Day_Night__active {
-  color: $highlightTextColour;
+  color: red;
 }
 
 .residences--building__btn,
@@ -338,18 +339,18 @@
   height: 40px;
   padding: 5px 5px 10px;
   border-radius: 8px;
-  font-family: "Brown";
+  font-family: "sweet-sans-pro";
   font-size: 20px;
   background: $bkgColour;
-  color: $primaryTextColour;
+  color: red;
 }
 
 .residences--building__btn {
-  color: $highlightTextColour;
+  color: red;
   transition: color 0.2s ease-out;
 
   &:hover {
-    color: $primaryTextColour;
+    color: blue;
   }
 }
 
