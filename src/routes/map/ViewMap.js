@@ -199,7 +199,7 @@ function MapContent() {
       ref={containerRef}
       className="aerial-map--transform-container"
       style={{
-        width: isOpen ? '1680px' : '2045px',
+        width: '1920px',
         transition: 'width 0.5s ease-in-out',
         position: 'relative',
       }}

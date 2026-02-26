@@ -23,47 +23,22 @@
 }
 
 
-.aerial-map--menu {
-    position: absolute;
-    top: 0px;
-    width: 385px;
-    height: 980px;
-    right: -240px;
-    background: $bkgColour;
-
-}
-
-
 .aerial-map--menu-options {
+    background: $bkgColour;
+    padding: 20px;
     position: absolute;
-    top: 0px;
-    right: 80px;
-    left: 40px;
+    top: 50px;
+    right: 50px;
+    border-radius: 10px;
 }
 
-.map-sidebar-toggle-btn {
-    position: absolute;
-    top: 50%;
-    left: -40px;
-    transform: translateY(-50%);
-    height: 65px;
-    width: 60px;
-    background: #2b2a28;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
-}
-.map-sidebar-toggle-btn img{
-    width: 40px;
-}
 .aerial-map--title {
     position: relative;
-    left: -9px;
     display: block;
-    margin: 65px 0px 25px 0px;
+    margin: 5px 0px 25px;
     color: $primaryTextColour;
     font-size: 25px;
+    text-transform: uppercase;
     @include font-residences-menu;
 }
 
@@ -71,8 +46,9 @@
 .aerial-map--btn {
     position: relative;
     display: block;
-    margin: 0px 0px 30px 0px;
-    padding: 15px 0px 0px 35px;
+    margin: 0px 0px 10px 0px;
+    padding: 10px 0px;
+    width: 100%;
     color: $primaryTextColour;
     font-size: 16px;
     text-align: left;
@@ -102,17 +78,23 @@
 
 .aerial-map--text__active {
     color: white !important;
+    text-decoration: underline;
 }
-
+.aerial-map-title-divider{
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 25px;
+}
 .aerial-map--zoom-tools {
-    z-index: $coreMenuZIndex - 2;
     position: absolute;
-    left: 25%;
+    bottom: 50px;
+    right: 50px;
+    border-radius: 10px;
+    padding: 15px 20px;
+    z-index: $coreMenuZIndex - 2;
     font-family: 'Inter';
-    top: 790px;
-    height: 40px;
     text-align: center;
-    transform: translateX(-70%);
+    background: $bkgColour;
 
     button {
         margin: 0px 10px;
@@ -122,19 +104,14 @@
         &:hover {
             color: $primaryTextColour;
         }
+
+        img{
+            width: auto;
+        }
     }
 }
 
-.aerial-map--zoom-tools--title {
-    margin: 0px auto 20px;
-    @include font-primary;
-    text-transform: uppercase;
-    color: $primaryTextColour;
-    font-size: 18px;
-    margin-right: 10px;
-}
-
-.aerial-map--transform-container>div>div>div{
-    width: 100% !important;
-    margin-left: -63px;
-}
+// .aerial-map--transform-container>div>div>div{
+//     width: 100% !important;
+//     margin-left: -63px;
+// }

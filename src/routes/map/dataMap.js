@@ -1,21 +1,12 @@
 
 export const data = [
     { 
-        title: 'Transport',
+        title: 'Explore',
         options: [
-            { title: 'Train' },
-            { title: 'Tram' },
-            { title: 'Bus' },
+            { title: 'Parks & Nature' },
+            { title: 'Dining & Retail' },
+            { title: 'Education, Medical & Transport' },
+            { title: 'Lifestyle, Sport & Wellness' },
         ]
     },
-    { 
-        title: 'Amenities',
-        options: [
-            { title: 'Sports & Recreation' },
-            { title: 'Shopping' },
-            { title: 'Entertainment & Culture' },
-            { title: 'Education' },
-            { title: 'Dining' },
-        ]
-    }
 ];
