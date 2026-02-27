@@ -25,17 +25,19 @@ export default function ViewResidences() {
         {rotations}
       </div>
 
-      {/* Day/Night toggle */}
-      <ConnectViewResidencesDayNight />
 
-      {/* Rotation UI controls */}
-      <ConnectViewResidencesUIRotate />
+      <div className='residences--building-container'>
+        {/* Day/Night toggle */}
+        <ConnectViewResidencesDayNight />
+        {/* Rotation UI controls */}
+        <ConnectViewResidencesUIRotate />
+      </div>
 
-      {/* Level group / floorplate modal */}
-      <ConnectViewResidencesLevelGroup />
+        {/* Level group / floorplate modal */}
+        <ConnectViewResidencesLevelGroup />
 
-      {/* Apartment buttons / modal */}
-      <ConnectViewResidencesApartment />
+        {/* Apartment buttons / modal */}
+        <ConnectViewResidencesApartment />
 
       {/* Consolidated persistent menu */}
       <ConnectViewResidencesMenu />

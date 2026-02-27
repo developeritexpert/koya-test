@@ -13,7 +13,7 @@ const settings = {
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 6000,
-  arrows: false,
+  arrows: true,
   pauseOnHover: false,
   pauseOnFocus: false,
   pauseOnDotsHover: false,
@@ -34,7 +34,7 @@ export default function ViewHome() {
 
   return (
 <LoadContainer>
-  <div className="slider--container">
+  <div className="slider--container view-lifestyle-wrapper">
     <Slick {...settings} ref={slickRef}>
       {[1, 2,].map((i) => {
         const num = String(i).padStart(2, "0"); // 01, 02, 03...

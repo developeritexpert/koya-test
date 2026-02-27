@@ -9,7 +9,7 @@ const ButtonResidencesDayNight = ({ data, onSelect, selected }) => {
             onClick={onSelect}
             style={{ top: data.top, left: data.left }}
         >
-            {data.title}
+            <img src={data.imgSrc} alt={data.title}/>
         </button>
     )
 }

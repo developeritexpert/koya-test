@@ -28,6 +28,12 @@
   }
 }
 
+.view-lifestyle-wrapper{
+  height: calc(100% - 100px);
+  position: relative;
+  top: 100px;
+}
+
 .slick-slide-item {
   width: 100%;
   height: 100%;

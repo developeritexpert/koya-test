@@ -36,7 +36,7 @@ function ViewResidencesUIRotate({ currRotation, isAnimating, updateRotation, upd
   };
 
   return (
-    <>
+    <div className="residences--button__rotate-container">
       <ButtonResidencesRotate
         className="residences--button__rotate-left"
         imgRef="./img/interface/icon-rotate-left-white.png"
@@ -47,7 +47,7 @@ function ViewResidencesUIRotate({ currRotation, isAnimating, updateRotation, upd
         imgRef="./img/interface/icon-rotate-right-white.png"
         onSelected={() => onRotateSelected('-=18')}
       />
-    </>
+    </div>
   );
 }
 

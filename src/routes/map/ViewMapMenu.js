@@ -5,13 +5,28 @@ import './stylesMap.scss'
 import { useSidebar } from './SidebarContext';
 
 export default function ViewAerialMapMenu({ zoomInFunc, zoomOutFunc, showToggle = true }) {
-    const [zoomInSrc, setZoomInSrc] = useState('img/interface/icon-zoom-in-white.png');
-    const [zoomOutSrc, setZoomOutSrc] = useState('img/interface/icon-zoom-out-white.png');
+
+    const [isZoomedIn, setIsZoomedIn] = useState(false);
+
+    const handleZoomIn = () => {
+    if (!isZoomedIn) {
+        zoomInFunc();
+        setIsZoomedIn(true);
+    }
+    };
+
+    const handleZoomOut = () => {
+        if (isZoomedIn) {
+            zoomOutFunc();
+            setIsZoomedIn(false);
+        }
+    };
 
     const menuItems = [];
     let currMenuGroup;
     let currMenuItem;
     let currIndex = 0;
+    let buttonIndex = 0;
 
     for (let i = 0; i < data.length; i++) {
         currMenuGroup = data[i].options;
@@ -25,9 +40,10 @@ export default function ViewAerialMapMenu({ zoomInFunc, zoomOutFunc, showToggle 
         for (let j = 0; j < currMenuGroup.length; j++) {
             currMenuItem = currMenuGroup[j];
             menuItems.push(
-                <ConnectButtonMapItem key={currIndex} item={currMenuItem.title} />
+                <ConnectButtonMapItem key={currIndex} item={currMenuItem.title} index={buttonIndex} />
             );
             currIndex++;
+            buttonIndex++;
         }
     }
 
@@ -39,18 +55,18 @@ export default function ViewAerialMapMenu({ zoomInFunc, zoomOutFunc, showToggle 
 
             <div className='aerial-map--zoom-tools'>
                 <button
-                    // onMouseEnter={() => setZoomOutSrc('img/interface/icon--zoom-out-selected.png')}
-                    // onMouseOut={() => setZoomOutSrc('img/interface/icon--zoom-out.png')}
-                    onClick={zoomOutFunc}
+                    onClick={handleZoomOut}
+                    disabled={!isZoomedIn}
+                    className={!isZoomedIn ? 'disabled' : ''}
                 >
-                    <img src={zoomOutSrc} width='36.25' height='36.25' alt='Zoom Out icon' />
+                    <img src="img/interface/icon-zoom-out-white.png" width='36.25' height='36.25' alt='Zoom Out icon' />
                 </button>
                 <button
-                    // onMouseEnter={() => setZoomInSrc('img/interface/icon--zoom-in-selected.png')}
-                    // onMouseOut={() => setZoomInSrc('img/interface/icon--zoom-in.png')}
-                    onClick={zoomInFunc}
+                    onClick={handleZoomIn}
+                    disabled={isZoomedIn}
+                    className={isZoomedIn ? 'disabled' : ''}
                 >
-                    <img src={zoomInSrc} width='36.25' height='36.25' alt='Zoom In icon' />
+                    <img src="img/interface/icon-zoom-in-white.png" width='36.25' height='36.25' alt='Zoom In icon' />
                 </button>
             </div>
         </div>

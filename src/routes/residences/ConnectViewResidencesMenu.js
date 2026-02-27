@@ -74,8 +74,6 @@ function ConnectViewResidencesMenu({ selectedLevel, currRotation, selectLevel, s
       <ul className={`residences--menu__list ${menuOpen ? 'open' : ''}`}>
         {levelsData.map(level => (
           <li key={level.key}>
-            <span>{level.title}</span>
-
             {level.subLevels && (
               <ul className={`residences--menu__sublist ${menuOpen ? 'open' : ''}`}>
                 {level.subLevels.map((sub, index) => {
@@ -90,9 +88,11 @@ function ConnectViewResidencesMenu({ selectedLevel, currRotation, selectLevel, s
                         onMouseLeave={handleSubLeave}
                         onClick={() => handleSubClick(subKey, sub.target)}
                         onPointerDown={(e) => handleSubPointer(subKey, sub.target, e)}
-                        style={{ minWidth: 48, minHeight: 48, padding: 8 }}
-                      >
+                        style={{ minWidth: 48, minHeight: 48, padding: "8px 0px" }}
+                      > 
+                      <span className="residences--menu__list-span">
                         {sub.level || sub.title}
+                      </span>
                       </button>
                     </li>
                   );
