@@ -5,68 +5,68 @@ import './stylesMap.scss'
 import { useSidebar } from './SidebarContext';
 
 export default function ViewAerialMapMenu({ zoomInFunc, zoomOutFunc, showToggle = true }) {
-    const [zoomInSrc, setZoomInSrc] = useState('img/interface/icon--zoom-in.png');
-    const [zoomOutSrc, setZoomOutSrc] = useState('img/interface/icon--zoom-out.png');
+
+    const [isZoomedIn, setIsZoomedIn] = useState(false);
+
+    const handleZoomIn = () => {
+    if (!isZoomedIn) {
+        zoomInFunc();
+        setIsZoomedIn(true);
+    }
+    };
+
+    const handleZoomOut = () => {
+        if (isZoomedIn) {
+            zoomOutFunc();
+            setIsZoomedIn(false);
+        }
+    };
 
     const menuItems = [];
     let currMenuGroup;
     let currMenuItem;
     let currIndex = 0;
+    let buttonIndex = 0;
 
     for (let i = 0; i < data.length; i++) {
         currMenuGroup = data[i].options;
         menuItems.push(
+            <>  
             <h2 className='aerial-map--title' key={currIndex}>{data[i].title}</h2>
+            <div className="aerial-map-title-divider"></div>
+            </>
         );
         currIndex++;
         for (let j = 0; j < currMenuGroup.length; j++) {
             currMenuItem = currMenuGroup[j];
             menuItems.push(
-                <ConnectButtonMapItem key={currIndex} item={currMenuItem.title} />
+                <ConnectButtonMapItem key={currIndex} item={currMenuItem.title} index={buttonIndex} />
             );
             currIndex++;
+            buttonIndex++;
         }
     }
 
-    const { isOpen, toggleSidebar } = useSidebar();
-
     return (
         <div className='aerial-map--menu'>
-
-            {/* ✅ Toggle icon (optional) */}
-            {showToggle && (
-                <div className='map-sidebar-toggle-btn' onClick={toggleSidebar}>
-                    <img
-                        src="./toggle-sidebar.png"
-                        alt="Toggle Sidebar"
-                        style={{
-                            transform: isOpen ? 'rotate(0deg)' : 'rotate(180deg)',
-                            transition: 'transform 0.5s ease-in-out'
-                        }}
-                    />
-                </div>
-            )}
-
             <div className='aerial-map--menu-options'>
                 {menuItems}
             </div>
 
             <div className='aerial-map--zoom-tools'>
-                <p className='aerial-map--zoom-tools--title'>Zoom</p>
                 <button
-                    onMouseEnter={() => setZoomInSrc('img/interface/icon--zoom-in-selected.png')}
-                    onMouseOut={() => setZoomInSrc('img/interface/icon--zoom-in.png')}
-                    onClick={zoomInFunc}
+                    onClick={handleZoomOut}
+                    disabled={!isZoomedIn}
+                    className={!isZoomedIn ? 'disabled' : ''}
                 >
-                    <img src={zoomInSrc} width='36.25' height='36.25' alt='Zoom In icon' />
+                    <img src="img/interface/icon-zoom-out-white.png" width='36.25' height='36.25' alt='Zoom Out icon' />
                 </button>
-
                 <button
-                    onMouseEnter={() => setZoomOutSrc('img/interface/icon--zoom-out-selected.png')}
-                    onMouseOut={() => setZoomOutSrc('img/interface/icon--zoom-out.png')}
-                    onClick={zoomOutFunc}
+                    onClick={handleZoomIn}
+                    disabled={isZoomedIn}
+                    className={isZoomedIn ? 'disabled' : ''}
                 >
-                    <img src={zoomOutSrc} width='36.25' height='36.25' alt='Zoom Out icon' />
+                    <img src="img/interface/icon-zoom-in-white.png" width='36.25' height='36.25' alt='Zoom In icon' />
                 </button>
             </div>
         </div>

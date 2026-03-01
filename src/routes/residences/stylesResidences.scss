@@ -6,12 +6,11 @@
 //////////////////////////////////////////////////
 
 @mixin rotate-btn {
-  position: absolute;
-  top: 50%;
-  width: 23px;
-  height: 32px;
+  // width: 23px;
+  // height: 32px;
   cursor: pointer;
   transform-origin: center;
+  padding: 5px;
   transition: transform 0.3s ease-out;
 
   &:focus {
@@ -50,19 +49,19 @@
 
 .residences--button__rotate-left {
   @include rotate-btn;
-  right: 100px;
 
   &:hover {
     transform: rotate(-90deg);
+    transform-origin: center;
   }
 }
 
 .residences--button__rotate-right {
   @include rotate-btn;
-  right: 200px;
 
   &:hover {
     transform: rotate(90deg);
+    transform-origin: center;
   }
 }
 
@@ -296,31 +295,25 @@
 //////////////////////////////////////////////////
 
 .residences--building-container {
-  position: relative;
-  top: 775px;
-  left: 340px;
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  background-color: $menu-background;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
 }
 
-.residences--building-Day-Night-container {
-  position: relative;
-  bottom: -200px;
-  left: 1335px;
-  width: 140px;
-  height: 40px;
-  background: $menu-background;
-  border-radius: 8px;
-}
 
 .residences--building__btn_Day_Night {
-  position: absolute;
-  width: 90px;
-  height: 40px;
   font-family: "sweet-sans-pro";
   font-size: 20px;
   color: grey;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0.5;
+  padding: 5px;
   transition: color 0.2s ease-out;
 
   &:hover {
@@ -329,7 +322,7 @@
 }
 
 .residences--building__btn_Day_Night__active {
-  color: red;
+  opacity: 1;
 }
 
 .residences--building__btn,
@@ -354,3 +347,17 @@
   }
 }
 
+.residences--apartment-btns-layer {
+  position: absolute;
+  inset: 0; 
+  pointer-events: none;
+}
+
+.residences--apartment-btns-layer .residences--apartment-btn {
+  pointer-events: all; 
+}
+/* reuse your existing fade transition classes, or add these */
+.fade-enter         { opacity: 0; }
+.fade-enter-active  { opacity: 1; transition: opacity 300ms ease; }
+.fade-exit          { opacity: 1; }
+.fade-exit-active   { opacity: 0; transition: opacity 300ms ease; }

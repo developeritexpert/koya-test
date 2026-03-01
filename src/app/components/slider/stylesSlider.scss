@@ -65,11 +65,11 @@
 		content: '';
 		position: absolute;
 		top: 10px; left: 10px;
-		width: 30px; height: 30px;
+		width: 40px; height: 40px;
 		opacity: 1;
 		color: inherit;
-		border: solid currentColor;
-		border-width: 0 2px 2px 0;
+		border: solid #3f2d20;
+		border-width: 0 1px 1px 0;
 		display: inline-block;
 		padding: 2px;
 		transform: rotate(135deg);
@@ -117,7 +117,7 @@
 				height: 10px;
 				color: inherit;
 				opacity: 1;
-				border: 1px solid currentColor;
+				border: 1px solid #3f2d20;
 				border-radius: 50%;
 			}
 		}
@@ -126,6 +126,6 @@
 	li.slick-active button:before {
 		color: inherit;
 		opacity: 1;
-		background-color: currentColor;
+		background-color: #3f2d20;
 	}
 }
