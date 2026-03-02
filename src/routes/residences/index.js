@@ -32,7 +32,7 @@ const defaultState = {
   hoveredLevel: '',        // level being hovered
   roomSizes: [''],
   roomSelectorVisible: false,
-  Day: 'Night',
+  Day: 'Day',
   tower: 'T2',
 };
 

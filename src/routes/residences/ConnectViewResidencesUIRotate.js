@@ -40,12 +40,12 @@ function ViewResidencesUIRotate({ currRotation, isAnimating, updateRotation, upd
       <ButtonResidencesRotate
         className="residences--button__rotate-left"
         imgRef="./img/interface/icon-rotate-left-white.png"
-        onSelected={() => onRotateSelected('+=18')}
+        onSelected={() => onRotateSelected('-=18')}
       />
       <ButtonResidencesRotate
         className="residences--button__rotate-right"
         imgRef="./img/interface/icon-rotate-right-white.png"
-        onSelected={() => onRotateSelected('-=18')}
+        onSelected={() => onRotateSelected('+=18')}
       />
     </div>
   );

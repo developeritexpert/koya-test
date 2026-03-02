@@ -4,12 +4,12 @@ export const galleryRenders01 = [
 	{ title: '2', left: '530px', top: '100px', rollOver: "Rooftop Pool", caption: [''],src: '/img/gallery-renders/gallery-tmb-renders-02.jpg', href: '/img/gallery-renders/gallery-renders-02.jpg' },
 	{ title: '3', left: '960px', top: '100px', rollOver: "Rooftop BBQ Lounge", caption: [''],src: '/img/gallery-renders/gallery-tmb-renders-03.jpg', href: '/img/gallery-renders/gallery-renders-03.jpg' },
 	{ title: '4', left: '1390px', top: '100px', rollOver: "Rooftop BBQ Dining", caption: [''],src: '/img/gallery-renders/gallery-tmb-renders-04.jpg', href: '/img/gallery-renders/gallery-renders-04.jpg' },
-	{ title: '5', left: '100px', top: '370px', rollOver: "Living", caption: [''],src: '/img/gallery-renders/gallery-tmb-renders-05.jpg', href: '/img/gallery-renders/gallery-renders-05.jpg' },
-	{ title: '6', left: '530px', top: '370px', rollOver: "Dining", caption: [""],src: '/img/gallery-renders/gallery-tmb-renders-06.jpg', href: '/img/gallery-renders/gallery-renders-06.jpg' },
-	{ title: '7', left: '960px', top: '370px',rollOver: "Bedroom", caption: [""], src: '/img/gallery-renders/gallery-tmb-renders-07.jpg', href: '/img/gallery-renders/gallery-renders-07.jpg' },
-	{ title: '8', left: '1390px', top: '370px',rollOver: "Bathroom", caption: [''], src: '/img/gallery-renders/gallery-tmb-renders-08.jpg', href: '/img/gallery-renders/gallery-renders-08.jpg' },
-	{ title: '9', left: '100px', top: '640px', rollOver: "Living", caption: [""],src: '/img/gallery-renders/gallery-tmb-renders-09.jpg', href: '/img/gallery-renders/gallery-renders-09.jpg' },
-	{ title: '10', left: '530px', top: '640px',rollOver: "Kitchen", caption: [''], src: '/img/gallery-renders/gallery-tmb-renders-10.jpg', href: '/img/gallery-renders/gallery-renders-10.jpg' },
+	{ title: '5', left: '100px', top: '370px', rollOver: "2BR U504 Living + Kitchen", caption: [''],src: '/img/gallery-renders/gallery-tmb-renders-05.jpg', href: '/img/gallery-renders/gallery-renders-05.jpg' },
+	{ title: '6', left: '530px', top: '370px', rollOver: "2BR U504 Kitchen", caption: [""],src: '/img/gallery-renders/gallery-tmb-renders-06.jpg', href: '/img/gallery-renders/gallery-renders-06.jpg' },
+	{ title: '7', left: '960px', top: '370px',rollOver: "2BR U504 Master Bedroom", caption: [""], src: '/img/gallery-renders/gallery-tmb-renders-07.jpg', href: '/img/gallery-renders/gallery-renders-07.jpg' },
+	{ title: '8', left: '1390px', top: '370px',rollOver: "2BR U504 Ensuite", caption: [''], src: '/img/gallery-renders/gallery-tmb-renders-08.jpg', href: '/img/gallery-renders/gallery-renders-08.jpg' },
+	{ title: '9', left: '100px', top: '640px', rollOver: "3BR U501 Living + Balcony", caption: [""],src: '/img/gallery-renders/gallery-tmb-renders-09.jpg', href: '/img/gallery-renders/gallery-renders-09.jpg' },
+	{ title: '10', left: '530px', top: '640px',rollOver: "3BR U501 Kitchen", caption: [''], src: '/img/gallery-renders/gallery-tmb-renders-10.jpg', href: '/img/gallery-renders/gallery-renders-10.jpg' },
 	//{ title: '11', left: '960px', top: '640px',rollOver: "The Bathhouse Lounge Area", caption: ['The Bathouse Lounge Area'], src: '/img/gallery-renders/gallery-tmb-renders-11.jpg', href: '/img/gallery-renders/gallery-renders-11.jpg' },
 	//{ title: '12', left: '1390px', top: '640px', rollOver: 'The Bathhouse 25m Pool', caption: ['The Bathouse 25m Pool'],src: '/img/gallery-renders/gallery-tmb-renders-12.jpg', href: '/img/gallery-renders/gallery-renders-12.jpg' },
 ];
@@ -19,7 +19,7 @@ export const interiorFinishes01 = [
 	{ title: '1', left: '0px', top: '0px', src: '/img/interior-finishes/interior-finishes-01.jpg' },
 ];
 export const interiorFinishes02 = [
-	{ title: '2', left: '0px', top: '0px', src: '/img/interior-finishes/interior-finishes-2.jpg' },
+	{ title: '2', left: '0px', top: '0px', src: '/img/interior-finishes/interior-finishes-02.jpg' },
 ];
 export const interiorFinishes03 = [
 	{ title: '3', left: '0px', top: '0px', src: '/img/interior-finishes/interior-finishes-3.jpg' },

@@ -6,7 +6,7 @@ import ViewGalleryDesign from './design/ViewGalleryDesign';
 import ViewGalleryTeam from './team/ViewGalleryTeam';
 import ViewMap from './map/ViewMap';
 import ViewResidences from './residences/ViewResidences';
-import {interiorFinishes01, design01, design02, design03, design04, design05, galleryRenders01, Team01, InteriorImages01, InteriorImages02, InteriorImages03, InteriorImages04, InteriorImages05, InteriorImages06, InteriorImages07} from './gallery/data/gallery';
+import {interiorFinishes01,interiorFinishes02, design01, design02, design03, design04, design05, galleryRenders01, Team01, InteriorImages01, InteriorImages02, InteriorImages03, InteriorImages04, InteriorImages05, InteriorImages06, InteriorImages07} from './gallery/data/gallery';
 import ViewGalleryRollOver from './gallery/ViewGalleryRollOver';
 
 export const dataRoutes = [
@@ -55,7 +55,7 @@ export const dataRoutes = [
                 title: 'Finishes',
                 path: '/interior-finishes',
                 component: ViewGalleryInteriorFinishes,
-                data: [interiorFinishes01],
+                data: [interiorFinishes01,interiorFinishes02],
             },
         ]
     },
