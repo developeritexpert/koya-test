@@ -2,7 +2,7 @@
   "name": "KEB003 Koya APP",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://scharp-dev.com/KEB003-staging/",
+  "homepage": "https://koya-app.com.au/",
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
     "@reduxjs/toolkit": "^1.4.0",
