@@ -40,7 +40,7 @@
 }
 
 .gallery--image-black:after {
-    background: rgba(0, 0, 0, 0.3); // lighter so caption stays readable
+    background: rgba(49, 21, 4, 0.705); // lighter so caption stays readable
 }
 
 .gallery--image--no-hover:after {
@@ -60,11 +60,12 @@
 
     h1 {
         @include font-secondary;
-        font-size: 23px;
-        font-weight: 450;
+        font-size: 16px;
+        font-weight: 600;
         color: white; // stays bright
         text-align: center;
         margin: 0;
         padding: 0;
+        text-transform: uppercase;
     }
 }

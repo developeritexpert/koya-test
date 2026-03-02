@@ -5,6 +5,7 @@
 $bkgCanvasColour: #3f2d20;
 $frgColour: #3f2d20;
 $bkgColour: #3f2d20;
+$canvasColour:#f1f0e9;
 $primaryTextColour: #ffffff;
 $highlightTextColour: #ffffff;
 $coreMenuZIndex: 10;
@@ -127,7 +128,7 @@ button {
   display: none;
   width: 100%;
   height: 100%;
-  background: $bkgColour;
+  background: $canvasColour;
   opacity: 0;
 }
 
