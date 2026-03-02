@@ -58,7 +58,7 @@ export default function App () {
 
   	const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 	const [ inputPassword, setInputPassword ] = useState('');
-	const password = '9ac43e7a5e9ff468b77286945b2ec9ec3d6e6cf91ccf6bc3e94c8225fa1c53cf'; //sha-256 hash - https://passwordsgenerator.net/sha256-hash-generator/ - enter text as per "password" (include quotes "###")
+	const password = '6578ac32ff5f23cb8606a549ddbdc14a5646b93d263be1edc84c9d3a363a14e3'; //sha-256 hash - https://passwordsgenerator.net/sha256-hash-generator/ - enter text as per "password" (include quotes "###")
 	const refStatus = useRef(null);
 	const onPasswordChange = (event) => {
 		const newPassword = event.target.value;
