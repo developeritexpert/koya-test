@@ -10,12 +10,12 @@ export default function ViewDragger ( { data, /*hideButtons = false*/ } ) {
     const uiColour = data.uiColour || '#FFFFFF';
 	const [index, setIndex] = useState( data.currSrcIndex || 0 );
     const isHidden = data.hasOwnProperty('isHidden') ? data.isHidden : false
-  
+
 
     useEffect(() => {
         setIndex(data.currSrcIndex);
     }, [data.currSrcIndex]);
-    
+
     const options = {
         imgOptions: data.options,
         handlesResize: false,
