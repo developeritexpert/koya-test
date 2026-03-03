@@ -1,193 +1,306 @@
 @import "../../shared/shared.scss";
 
-//////////////////////////////////////////////////
-// VARIABLES
-//////////////////////////////////////////////////
 $fontSize: 14px;
+
 $linkHeight: $fontSize * 1.5;
 $linkOffset: -5px;
+
 $logoHeight: 78px;
 $logoOffset: -5px;
 
-//////////////////////////////////////////////////
-// HEADER
-//////////////////////////////////////////////////
 .header {
-  z-index: $coreMenuZIndex;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: $coreMenuHeight;
-  background: $frgColour;
-  border-bottom: 0px solid $primaryTextColour;
+    z-index: $coreMenuZIndex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $coreMenuHeight;
+    background: $frgColour;
+    border-bottom: 0px solid $primaryTextColour;
+   
+    @media (max-width:991px) {
+            position: relative;
+
+    }
+    
 }
+.header nav{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  @media (max-width:991px) {
+      justify-content: space-between;
+  }
+}
+.mobile-nav-toogler{
+  color: white;
+  font-size: 24px;
+    @media (min-width: 991px) { // adjust breakpoint as needed
+   display: none;
+  
+  }
+}
+
+.header--nav-ui{
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+  width: 100%;
+  max-width: 80%;
+  list-style: none;
+  padding: 0;
+  @media (max-width:1399px) {
+    gap: 40px;
+  }
+
+}
+
+.header--nav__li{
+  position: relative;
+}
+
+.header--nav-ui {
+  @media (max-width: 991px) { // adjust breakpoint as needed
+    display: none;
+  }
+}
+.moble-header {
+  position: absolute;
+  width: 100%;
+  z-index: 99999;
+  margin: 0;
+  background-color: white;
+  color: black !important;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+    
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 30px; 
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    @media (min-width:991px) {
+        display: none;
+    }
+}
+
+  /* when the component has the "open" modifier we allow it to expand to a reasonable
+     height.  using a hard-coded max is fine for a known number of links; if it's
+     dynamic you could calculate it in JS and inline-style the element instead. */
+  .moble-header.open {
+    /* allow the mobile menu to expand as tall as it needs (including any
+       opened sub‑menus).  the hard-coded 500px was too small when a parent
+       item opened a drop; use a large ceiling and enable scrolling instead
+       of hiding the content. */
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 50px 30px;
+  }
 
 .header--nav {
-  position: absolute;
-  top: 0;
-  left: 25px;
-
-  ul {
-    margin: 0;
-    padding: 0;
+  
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+}
+.sub--menu-item{
+  list-style: none;
+  @media (max-width:991px) {
+    a{
+      padding: 0;
+    }
   }
 }
+.sub--menu-item {
+  .header--nav__link-in-sub-menu {
+    position: relative;
+    display: inline-block;
 
-.header--nav__li {
-  position: relative;
-  display: inline-block;
-  margin: 5px 120px 0 0;
-  vertical-align: middle;
-}
+    .menu-hover-line {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: $primaryTextColour;
 
-//////////////////////////////////////////////////
-// MAIN NAV LINK
-//////////////////////////////////////////////////
-.header--nav__link {
-  $linkPaddingTop: (($coreMenuHeight - $linkHeight) / 2) + $linkOffset;
-  $linkPaddingBottom: (($coreMenuHeight - $linkHeight) / 2) - $linkOffset;
-
-  display: block;
-  margin: 0px;
-  padding: #{ $linkPaddingTop } 25px #{ $linkPaddingBottom };
-  color: $primaryTextColour;
-  text-transform: uppercase;
-  text-decoration: none;
-  @include font-secondary;
-  font-weight: 500;
-  font-style: normal;
-  transition: all 0.3s ease-out;
-  font-size: $fontSize;
-  letter-spacing: 1px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.4s ease;
+    }
+  }
 
   &:hover {
-    color: $highlightTextColour;
+    .header--nav__link-in-sub-menu {
+      .menu-hover-line {
+        transform: scaleX(1);
+      }
+    }
   }
+}
+
+
+
+.header--nav__sub-menu {
+    display: none; //displayed with JS
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 200px;
+    padding: 10px;
+    background: $frgColour;
+    border-radius: 0px 0px 10px 10px;
+    text-align: center;
+    filter: drop-shadow(3px 3px 2px rgb(31, 31, 31));
+    @media (max-width:991px) {
+      padding: 20px;
+      color: white !important;
+      border: 1px solid black;
+      position: relative;
+      z-index: 999999999;
+          filter: drop-shadow(3px 3px 2px rgb(235, 229, 229));
+          
+      ul{
+        padding: 0;
+                display: flex;
+        align-items: start;
+        flex-direction: column;
+        color: white;
+      }
+      /* on narrow viewports we no longer want the submenu to be absolutely
+         positioned or centred with translateX; that logic only makes sense
+         for the desktop hover menu.  resetting these prevents the dropdown
+         from floating off the side or overlapping other items when the
+         mobile navigation is open. */
+      left: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+    }
+}
+
+
+.header--nav__link {
+    $linkPaddingTop: (
+        ($coreMenuHeight - $linkHeight) / 2) + $linkOffset;
+    $linkPaddingBottom: (
+        ($coreMenuHeight - $linkHeight) / 2) - $linkOffset;
+
+    display: block;
+    margin: 0px;
+    // padding: #{ $linkPaddingTop } 25px #{ $linkPaddingBottom };
+    color: $primaryTextColour;
+    text-transform: uppercase;
+    text-decoration: none;
+    @include font-secondary;
+    font-weight: 300;
+    font-style: normal;
+    transition: all 0.3s ease-out;
+    font-size: $fontSize;
+    letter-spacing: 1px;
+
+    &:hover {
+        color: $highlightTextColour;
+    }
+    @media (max-width:991px) {
+      /* mobile: keep all parent links white rather than switching to
+         black (which made the active item invisible against the white
+         mobile panel).  using !important ensures the rule overrides the
+         selected-link colour if necessary. */
+      color: white !important;
+    }
 }
 
 .main--menu__link {
   text-decoration: none !important;
   position: relative;
   line-height: 1.5 !important;
-
-  // underline
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background: #fff;
-    transform: scaleX(0);
-    transform-origin: bottom;
-    transition: transform 0.4s ease;
-  }
 }
 
-// hover underline
+.main--menu__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: bottom;
+  transition: transform 0.4s ease;
+}
+
 .main--menu__link-wrapper:hover .main--menu__link::after {
   transform: scaleX(1);
   transform-origin: bottom;
 }
 
-//////////////////////////////////////////////////
-// LOGO LINK
-//////////////////////////////////////////////////
-.header--nav__link-logo {
-  $logoPaddingTop: (($coreMenuHeight - $logoHeight) / 2) + $logoOffset;
-  $logoPaddingBottom: (($coreMenuHeight - $logoHeight) / 2) - $logoOffset;
 
-  @extend .header--nav__link;
-  padding-top: #{ $logoPaddingTop };
-  padding-bottom: #{ $logoPaddingBottom };
+    .header--nav__link-in-sub-menu {
+        @extend .header--nav__link;
+        height: auto;
+        text-align: left;
+        padding: 10px 20px;
+     @media (max-width:991px) {
+      color: white;
+     }
+    }
 
-  img {
-    max-height: $logoHeight;
-    width: auto;
+
+    .header--nav__link-logo {
+        $logoPaddingTop: (
+            ($coreMenuHeight - $logoHeight) / 2) + $logoOffset;
+        $logoPaddingBottom: (
+            ($coreMenuHeight - $logoHeight) / 2) - $logoOffset;
+
+        @extend .header--nav__link;
+        padding-top: #{ $logoPaddingTop };
+        padding-bottom: #{ $logoPaddingBottom };
+
+        img {
+            max-height: $logoHeight;
+            width: auto;
+        }
+    }
+
+
+    .header--nav__link-selected {
+        @extend .header--nav__link;
+
+        &:hover {
+            color: $highlightTextColour;
+
+        }
+
+        color: $highlightTextColour;
+
+        @media (max-width:767px) {
+          /* ensure the selected state also remains visible on mobile */
+          color: white !important;
+        }
+    }
+    
+    .header--nav__link {
+
+  @media (max-width:991px) {
+    color: black !important;
   }
 }
 
-//////////////////////////////////////////////////
-// ACTIVE LINK
-//////////////////////////////////////////////////
 .header--nav__link-selected {
-  @extend .header--nav__link;
-  color: $highlightTextColour;
 
-  // MAIN MENU: selected underline
-  .main--menu__link::after {
-    transform: scaleX(1); // underline always visible
-    background: $highlightTextColour;
-  }
-
-  &:hover {
-    color: $highlightTextColour;
+  @media (max-width:767px) {
+    color: black !important;
   }
 }
 
-//////////////////////////////////////////////////
-// SUBMENU LINK STYLING (TEXT-WIDTH UNDERLINE)
-//////////////////////////////////////////////////
-.header--nav__link-in-sub-menu {
-  @extend .header--nav__link;
-  height: auto;
-  text-align: center; // center text
-  padding: 10px 20px;
-  display: inline-block; // shrink underline to text width
-
-  .submenu-text {
-    position: relative;
-    display: inline-block; // text-width underline
-  }
-
-  .submenu-text::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background: $primaryTextColour;
-    transform: scaleX(0);
-    transform-origin: bottom;
-    transition: transform 0.35s ease;
-  }
-
-  &:hover .submenu-text::after {
-    transform: scaleX(1);
-  }
-}
-
-// active route underline for submenu
-.header--nav__link-selected .submenu-text::after {
-  transform: scaleX(1);
-  background: $highlightTextColour;
-}
-
-//////////////////////////////////////////////////
-// SUBMENU CONTAINER
-//////////////////////////////////////////////////
-.header--nav__sub-menu {
-  display: none; // displayed via JS
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%); // centers submenu relative to parent
-  width: 200px; // keep original width
-  padding: 10px;
-  background: $frgColour;
-  border-radius: 0px 0px 10px 10px;
-  text-align: center; // center items
-  filter: drop-shadow(3px 3px 2px rgb(31, 31, 31));
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li {
-    margin: 0 auto; // center items horizontally
+@media (max-width:991px){
+  .sub--menu-item a{
+    color: white !important;
   }
 }

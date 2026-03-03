@@ -1,3 +1,4 @@
+$canvasColour:#f1f0e9;
 
 .gallery--image {
     position: absolute;
@@ -17,4 +18,28 @@
             opacity: 1;
         }
     }
+}
+
+.gallery__images{
+  background: $canvasColour;
+
+    height: 100%;
+    padding: 80px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 16px;
+    width: 100%;
+    auto-rows: auto;
+    
+    @media (max-width:991px) {
+            grid-template-columns: repeat(2,1fr);
+            padding: 40px;
+
+    }
+       @media (max-width:767px) {
+            grid-template-columns: repeat(2,1fr);
+            padding: 20px;
+
+    }
+   
 }

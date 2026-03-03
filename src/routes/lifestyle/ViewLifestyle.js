@@ -7,11 +7,11 @@ import "slick-carousel/slick/slick-theme.css";
 
 const settings = {
   dots: true,
-  infinite: false,
+  infinite: true,
   speed: 2000,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: false,
+  autoplay: true,
   autoplaySpeed: 6000,
   arrows: true,
   pauseOnHover: false,
@@ -34,7 +34,8 @@ export default function ViewHome() {
 
   return (
 <LoadContainer>
-  <div className="slider--container view-lifestyle-wrapper">
+
+  <div className="slider--container view-lifestyle-wrapper view-life-style ">
     <Slick {...settings} ref={slickRef}>
       {[1, 2,].map((i) => {
         const num = String(i).padStart(2, "0"); // 01, 02, 03...

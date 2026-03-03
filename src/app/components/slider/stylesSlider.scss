@@ -7,9 +7,13 @@
 }
 
 .slider--transform-container {
-    height: calc(100% - 100px);
+    height: calc(100vh - 100px);
     position: relative;
     top: 100px;
+	@media (max-width:991px) {
+		    top: 0;
+
+	}
 }
 
 .slick-slider {
@@ -129,3 +133,10 @@
 		background-color: #3f2d20;
 	}
 }
+// .slick-slide > div .gallery--image--no-hover {
+//     height: 100%;
+// }
+
+// .slick-slide > div .gallery--image--no-hover  img {
+//     object-fit: cover;
+// }

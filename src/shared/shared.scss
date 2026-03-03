@@ -6,6 +6,7 @@ $bkgCanvasColour: #3f2d20;
 $frgColour: #3f2d20;
 $bkgColour: #3f2d20;
 $canvasColour:#f1f0e9;
+
 $primaryTextColour: #ffffff;
 $highlightTextColour: #ffffff;
 $coreMenuZIndex: 10;
@@ -30,6 +31,12 @@ $menuTextColour: #ffffff;
   font-weight: 450;
 }
 
+@mixin font-light {
+  font-family: 'sweet-sans-pro', 'agency FB', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
 
 body {
   background: $bkgCanvasColour;
@@ -40,16 +47,29 @@ body {
   opacity: 0;
   transition: all 0.6s ease;
   display: none;
+   
 }
-
+.shared--load-container {
+  
+    bottom: 0;
+}
+.shared--load-container.is-loaded > div,.shared--load-container.is-loaded > div > div,.shared--load-container.is-loaded .view-home{
+  
+   height: 100%;
+    
+}
 .shared--load-container.is-loaded {
   opacity: 1;
   display: block;
-  // height: calc(100% - 100px);
-  // position: relative;
-  // top: 100px;
+  height: calc(100vh - 100px);
+  //  height: 100%;
+    @media (max-width:991px) {
+        height: calc(100vh - 100px);
+    }
 }
-
+.shared--load-container .view-lifestyle-wrapper {
+    top: 0;
+}
 button {
   background: none;
   border: none;
@@ -128,7 +148,7 @@ button {
   display: none;
   width: 100%;
   height: 100%;
-  background: $canvasColour;
+  background: $bkgCanvasColour;
   opacity: 0;
 }
 
@@ -140,7 +160,7 @@ button {
 
 .shared--img-fill-map {
   width: 100%;
-  height: 980px;
+  height: 100vh;
   object-fit: cover;
 }
 
