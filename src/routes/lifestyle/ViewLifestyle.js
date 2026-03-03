@@ -34,7 +34,8 @@ export default function ViewHome() {
 
   return (
 <LoadContainer>
-  <div className="slider--container view-lifestyle-wrapper">
+
+  <div className="slider--container view-lifestyle-wrapper view-life-style ">
     <Slick {...settings} ref={slickRef}>
       {[1, 2,].map((i) => {
         const num = String(i).padStart(2, "0"); // 01, 02, 03...

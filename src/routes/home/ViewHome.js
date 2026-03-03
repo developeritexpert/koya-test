@@ -5,6 +5,8 @@ import Slick from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+
+
 const settings = {
   dots: true,
   infinite: true,
@@ -13,7 +15,9 @@ const settings = {
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 5000,
-  arrows: false,
+  arrows: true,
+
+ 
   pauseOnHover: false,
   pauseOnFocus: false,
   pauseOnDotsHover: false,
@@ -34,7 +38,7 @@ export default function ViewHome() {
 
   return (
 <LoadContainer>
-  <div className="slider--container">
+  <div className=" view-home">
     <Slick {...settings} ref={slickRef}>
       {[1, 2, 3, 4].map((i) => {
         const num = String(i).padStart(2, "0"); // 01, 02, 03...

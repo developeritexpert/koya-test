@@ -302,6 +302,10 @@
   border-radius: 10px;
   padding: 15px;
   display: flex;
+  @media (max-width:767px) {
+        left: 1%;
+
+  }
 }
 
 
@@ -361,3 +365,4 @@
 .fade-enter-active  { opacity: 1; transition: opacity 300ms ease; }
 .fade-exit          { opacity: 1; }
 .fade-exit-active   { opacity: 0; transition: opacity 300ms ease; }
+

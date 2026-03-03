@@ -10,7 +10,7 @@ $menu-accent: #875937;
   font-style: normal;
 
   position: absolute;
-  top: 180px;
+  top: 10%;
   right: 80px;
   z-index: 10;
   background: $menu-background;
@@ -18,6 +18,11 @@ $menu-accent: #875937;
   border-radius: 10px;
   color: $menu-text-color;
   min-width: 300px;
+  @media (max-width:767px) {
+      left: 1%;
+      top: 2%;
+
+  }
 
   &__toggle {
     display: block;
@@ -185,6 +190,7 @@ $menu-accent: #875937;
               position: relative;
               display: inline-block;
               padding: 5px 0;
+              font-weight: 300;
 
               &::after {
                 content: "";
@@ -246,4 +252,23 @@ $menu-accent: #875937;
     display: flex;
     gap: 30px;
     padding: 0px 10px 0px 20px;
+}
+
+// .shared--load-container.is-loaded div {
+//     height: auto !important;
+// }
+
+.shared--load-container.is-loaded > div > div .residences--rotations {
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.shared--load-container.is-loaded > div > div .residences--building-container, .shared--load-container.is-loaded > div > div  .residences--menu {
+    height: auto;
+}
+
+
+.shared--load-container.is-loaded > div > div .residences--rotations > div img,.shared--load-container.is-loaded > div > div .residences--rotations > div {
+    height: 100%;
 }

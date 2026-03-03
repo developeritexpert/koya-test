@@ -199,7 +199,10 @@ function MapContent() {
       ref={containerRef}
       className="aerial-map--transform-container"
       style={{
-        width: '1920px',
+        width: '100%',
+        maxWidth: '1920px',
+       
+        aspectRatio: `${imgNatural.w} / ${imgNatural.h}`,
         transition: 'width 0.5s ease-in-out',
         position: 'relative',
       }}
@@ -212,7 +215,7 @@ function MapContent() {
         maxScale={2}
         showControls={false}
       >
-        <div
+        <div className='aeral-inner'
           style={{
             width: '100%',
             height: '100%',
@@ -227,7 +230,7 @@ function MapContent() {
             onLoad={onImgLoad}
             style={{
               width: '100%',
-              height: `${baseSize.h}px`,
+             
               objectFit: 'cover',
               userSelect: 'none',
               pointerEvents: 'none',
