@@ -1,10 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './stylesGallery.scss';
 
-const GalleryItem = ({ i, currImage, onImageSelected, onPointerDown }) => {
+const GalleryItem = ({ i, currImage, onImageSelected }) => {
   const [captionVisible, setCaptionVisible] = useState(false);
+  const lastTapRef = useRef(null);
+  const DOUBLE_TAP_DELAY = 300;
 
   const toggleCaption = () => setCaptionVisible(prev => !prev);
+
+  const handleTouchStart = (e) => {
+    if (!currImage.rollOver) {
+      // No rollover content — just pass through to onClick
+      return;
+    }
+
+    const now = Date.now();
+    if (lastTapRef.current && now - lastTapRef.current < DOUBLE_TAP_DELAY) {
+      // Double tap → trigger selection
+      lastTapRef.current = null;
+      setCaptionVisible(false);
+      onImageSelected(i);
+      e.preventDefault(); // prevent onClick firing again
+    } else {
+      // First tap → show caption
+      lastTapRef.current = now;
+      setCaptionVisible(true);
+    }
+  };
 
   return (
     <button
@@ -14,8 +36,7 @@ const GalleryItem = ({ i, currImage, onImageSelected, onPointerDown }) => {
       onClick={() => onImageSelected(i)}
       onMouseEnter={() => currImage.rollOver && setCaptionVisible(true)}
       onMouseLeave={() => setCaptionVisible(false)}
-      onTouchStart={toggleCaption}
-      onPointerDown={onPointerDown}
+      onTouchStart={handleTouchStart}
     >
       <img src={process.env.PUBLIC_URL + currImage.src} alt={currImage.title} />
 
