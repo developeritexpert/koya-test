@@ -1,0 +1,10 @@
+@font-face {
+    font-family: Brown;
+    src: url('./Brown-Regular.otf') format('otf');
+}
+
+@font-face {
+    font-family: 'Brown-Bold';
+    src: url('./Brown-Bold.otf') format('otf');
+
+}

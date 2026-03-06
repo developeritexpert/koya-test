@@ -1,0 +1,160 @@
+@import "../../shared/shared.scss";
+
+
+.aerial-map--transform-container {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: #{( 1920 - 150 )}px;
+    height: #{( 980 - 0 )}px;
+}
+
+.aerial-map--frg {
+    position: absolute;
+}
+
+
+.aerial-map--frg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.aerial-map--menu-options {
+    background: $bkgColour;
+    padding: 30px 30px 15px;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    border-radius: 10px;
+}
+
+.aerial-map--title {
+    position: relative;
+    display: block;
+    letter-spacing: 1px;
+    margin: 5px 0px 25px;
+    color: #ffffff;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 800;
+    @include font-primary;
+}
+
+
+.aerial-map--btn {
+    position: relative;
+    display: block;
+    margin: 0px 0px 16px 0px;
+    width: 100%;
+    color: $primaryTextColour;
+    font-size: 16px;
+    text-align: left;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    @include font-primary;
+
+    img {
+        position: absolute;
+        left: -18px;
+        top: 3px;
+        scale: 80%;
+    }
+
+    transition: all 0.2s ease-out;
+
+    .aerial-map--btn--inner{
+
+        position: relative;
+        display: inline-block;
+        padding: 7px 0px;
+
+            &:after{
+            content: "";
+            width: 100%;
+            display: block;
+            height: 1px;
+            background: #fff;
+            position: absolute;
+            top: 100%;
+            transform: scale(0);
+            transition: 0.4s;
+            transform-origin: left;
+        }
+    }
+    &:hover .aerial-map--btn--inner:after{
+        transform: scale(1);
+    }
+
+    &:hover {
+        color: $highlightTextColour;
+    }
+}
+
+
+.aerial-map--btn__active {
+
+    .aerial-map--btn--inner{
+
+        &:after{
+            transform: scale(1);
+        }
+    }
+
+    @extend .aerial-map--btn;
+    color: $primaryTextColour;
+}
+
+.aerial-map--text__active {
+    color: white !important;
+}
+.aerial-map-title-divider{
+    width: 100%;
+    border-bottom: 1px solid #875937;
+    margin-bottom: 25px;
+}
+.aerial-map--zoom-tools {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    border-radius: 10px;
+    padding: 15px 20px;
+    z-index: $coreMenuZIndex - 2;
+    font-family: 'Inter';
+    text-align: center;
+    background: $bkgColour;
+
+    .disabled{
+        cursor: auto;
+        opacity: 0.5;
+    }
+
+    button {
+        margin: 0px 10px;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+
+        &:hover {
+            color: $primaryTextColour;
+        }
+
+        img{
+            width: auto;
+        }
+    }
+}
+
+.aerial-map--number {
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+// .aerial-map--transform-container>div>div>div{
+//     width: 100% !important;
+//     margin-left: -63px;
+// }

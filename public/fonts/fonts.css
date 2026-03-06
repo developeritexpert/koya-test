@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('./Inter-VariableFont.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Punta';
+    src: url('./Punta-Regular.otf') format('otf');
+  }

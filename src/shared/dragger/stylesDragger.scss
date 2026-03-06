@@ -1,0 +1,201 @@
+	
+@import "../shared.scss";
+
+
+.dragger--container {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	// height: 1080px; //specified by #ViewDragger.js
+	overflow: hidden;
+}
+
+
+.dragger--draggable {
+	// position: absolute;
+	// left: 0px;
+	// top: 0px;
+	width: 100%; //specified by #ViewDragger.js
+	height: 100%; 
+	pointer-events: none;
+}
+
+
+.dragger--slide {
+	position: absolute;
+	height: 100%; width: 100%;
+	left: 0px;
+	display: flex;
+	transition: all 0.5s ease-in-out;
+	justify-content: center;
+	align-items: center;
+
+	.dragger--slide-inner-container {
+		margin: auto;
+		opacity: 0;
+		display: block;
+		width: 100%;
+    	height: 100%;
+
+		img{
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
+		}
+	}
+
+	.dragger--slide-captions {
+		@include font-secondary;
+		font-size: 20px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.dragger--split-image {
+		position: relative;
+
+		img{
+			user-select: none;
+			-webkit-user-drag: none;
+		}
+
+		> img:last-of-type {
+			height: 100%; width: 100%;
+			top: 0; left: 0;
+			position: absolute;
+		}
+
+		.SlideRevealCover {
+			position: absolute;
+			top: 0;
+			left: -1%;
+			height: 100%;
+			width: 2%;
+			z-index: 1;
+			cursor: pointer;
+
+			.SliderRevealIndicator {
+				position: absolute;
+				top: 0; left: 50%;
+				transform: translateX(-50%);
+				width: 6px; height: 100%;
+				background-color: $highlightTextColour;
+			}
+			
+
+			.SliderRevealIndicatorIcon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				z-index: 1;
+				
+				img {
+					position: absolute;
+					z-index: -1;
+					
+					transform: translate(-50%, -50%);
+					user-select: none;
+					-webkit-user-drag: none;
+				}
+			}
+
+			
+		}
+	}
+}
+
+
+.dragger--arrow-container {
+	position: absolute;
+	display: block;
+	top: 50%;
+	width: 50px;
+	height: 50px;
+	margin-top: -25px;
+	color: inherit;
+	cursor: pointer;
+	transition: all 0.3s ease-out;
+	&:hover {
+		opacity: 0.5;
+	}
+}	
+
+
+	.dragger--arrow-container__previous {
+		@extend .dragger--arrow-container;
+		left: 20px;
+	}
+
+
+	.dragger--arrow-container__next {
+		@extend .dragger--arrow-container;
+		right: 20px;
+	}
+
+
+	.dragger--arrow {
+		position: absolute;
+		top: 10px;
+		width: 30px;
+		height: 30px;
+		border: solid currentColor;
+		border-width: 0 2px 2px 0;
+		display: inline-block;
+		padding: 2px;
+	}
+
+
+		.dragger--arrow__previous {
+			@extend .dragger--arrow;
+			left: 20px;
+			transform: rotate(135deg);
+			-webkit-transform: rotate(135deg);
+		}
+
+
+		.dragger--arrow__next {
+			@extend .dragger--arrow;
+			transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg);
+		}
+
+
+.dragger--pagination {
+	z-index: 10;
+	position: absolute;
+	bottom: 30px;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	li {
+		display: inline-block;
+		margin: 0px 4px;
+		width: 10px;
+		height: 10px;
+	}
+	button {
+		display: block;
+		width: 10px;
+		height: 10px;
+		overflow: hidden;
+		opacity: 0;
+		color: inherit;
+		border: 1px solid currentColor;	
+		border-radius: 50%;
+		transition: all 0.3s ease-out;
+		text-indent: -9999px;
+		font-size: 0px;
+		text-align: left;
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+	button.active {
+		background-color: currentColor;
+		pointer-events: none;
+		cursor: default;
+	}
+}
