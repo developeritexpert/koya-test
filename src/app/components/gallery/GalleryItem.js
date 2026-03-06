@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './stylesGallery.scss';
 
-const GalleryItem = ({ i, currImage, onImageSelected }) => {
+const GalleryItem = ({ i, currImage, onImageSelected, onPointerDown }) => {
   const [captionVisible, setCaptionVisible] = useState(false);
 
   const toggleCaption = () => setCaptionVisible(prev => !prev);
@@ -15,6 +15,7 @@ const GalleryItem = ({ i, currImage, onImageSelected }) => {
       onMouseEnter={() => currImage.rollOver && setCaptionVisible(true)}
       onMouseLeave={() => setCaptionVisible(false)}
       onTouchStart={toggleCaption}
+      onPointerDown={onPointerDown}
     >
       <img src={process.env.PUBLIC_URL + currImage.src} alt={currImage.title} />
 
