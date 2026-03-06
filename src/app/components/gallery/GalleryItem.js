@@ -1,42 +1,47 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './stylesGallery.scss';
 
 const GalleryItem = ({ i, currImage, onImageSelected }) => {
   const [captionVisible, setCaptionVisible] = useState(false);
-  const lastTapRef = useRef(null);
-  const DOUBLE_TAP_DELAY = 300;
+  const [lastTapped, setLastTapped] = useState(false);
 
-  const toggleCaption = () => setCaptionVisible(prev => !prev);
+  useEffect(() => {
+    const handleOutsideTap = () => setLastTapped(false);
+    document.addEventListener('pointerdown', handleOutsideTap);
+    return () => document.removeEventListener('pointerdown', handleOutsideTap);
+  }, []);
 
-  const handleTouchStart = (e) => {
+  const handlePointerDown = (e) => {
+    if (!('ontouchstart' in window)) return; // touch devices only
+
+    e.stopPropagation(); // prevent the document listener from resetting lastTapped
+
     if (!currImage.rollOver) {
-      // No rollover content — just pass through to onClick
+      // No caption — single tap triggers selection directly
+      onImageSelected(i);
       return;
     }
 
-    const now = Date.now();
-    if (lastTapRef.current && now - lastTapRef.current < DOUBLE_TAP_DELAY) {
-      // Double tap → trigger selection
-      lastTapRef.current = null;
-      setCaptionVisible(false);
-      onImageSelected(i);
-      e.preventDefault(); // prevent onClick firing again
-    } else {
+    if (!lastTapped) {
       // First tap → show caption
-      lastTapRef.current = now;
       setCaptionVisible(true);
+      setLastTapped(true);
+    } else {
+      // Second tap → trigger selection
+      setCaptionVisible(false);
+      setLastTapped(false);
+      onImageSelected(i);
     }
   };
 
   return (
     <button
-      key={i}
       className={currImage.rollOver ? 'gallery--image-black' : 'gallery--image'}
       style={{ left: currImage.left, top: currImage.top }}
-      onClick={() => onImageSelected(i)}
+      onClick={() => !('ontouchstart' in window) && onImageSelected(i)}
       onMouseEnter={() => currImage.rollOver && setCaptionVisible(true)}
       onMouseLeave={() => setCaptionVisible(false)}
-      onTouchStart={handleTouchStart}
+      onPointerDown={handlePointerDown}
     >
       <img src={process.env.PUBLIC_URL + currImage.src} alt={currImage.title} />
 
