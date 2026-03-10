@@ -2,7 +2,6 @@
   "name": "KEB003 Koya APP",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://scharp-dev.com/KEB003-staging/",
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
     "@reduxjs/toolkit": "^1.4.0",
@@ -45,7 +44,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build:staging": "env-cmd -f .env.staging npm run build",
-    "build": "react-scripts build",
+    "build": "npm install --legacy-peer-deps && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

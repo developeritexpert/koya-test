@@ -46,7 +46,6 @@ function DraggerSlide ( { src, caption, show, options, left } ) {
     }
 
     useEffect( () => {
-        const uiColour = '#d8c448';
         if (!slide && show)
         {
             if ( Array.isArray(src) && src.length === 2 )
