@@ -1,0 +1,19 @@
+@font-face {
+    font-family: Brown;
+    src: url('./fonts/BrownFont/Brown-Regular.otf');
+  }
+
+  @font-face {
+    font-family: 'Brown-Bold';
+    src: url('./fonts/BrownFont/Brown-Bold.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter_18pt-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Punta';
+  src: url('./fonts/Punta-Regular.otf') format('otf');
+}

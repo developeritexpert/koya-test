@@ -1,0 +1,30 @@
+
+@import "../../shared/shared.scss";
+
+
+.enlarged {
+    z-index: $enlargedZIndex;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 100px);
+    background: $bkgColour;
+    background: rgba(82, 41, 8, 0.7);
+}
+
+
+.enlarged--close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: 80px;
+    background: url(./btn--close.png) no-repeat center center;
+    background-size: 80px 80px;
+    transition: all 0.3s ease-out;
+    &:hover {
+        opacity: 0.5;
+    }
+}
+

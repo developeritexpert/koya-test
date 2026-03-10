@@ -1,0 +1,142 @@
+@import "../../index.scss";
+
+
+$navLinkWidth: 50%;
+$navLinkHeight: 100%;
+
+
+.slideshow--container {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 1080px; //specified by #ViewSlideshow.js
+	overflow: hidden;
+}
+
+
+.slideshow--slide {
+	position: absolute;
+	z-index: 1;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	overflow: hidden;
+}
+
+
+.slideshow--pagination {
+	z-index: 10;
+	position: absolute;
+	bottom: 30px;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	li {
+		display: inline-block;
+		margin: 0px 4px;
+	}
+	a {
+		display: block;
+		width: 10px;
+		height: 10px;
+		overflow: hidden;
+		border: 1px solid $bkgColour;	
+		border-radius: 50%;
+		transition: all 0.3s ease-out;
+		text-indent: -9999px;
+		font-size: 0px;
+		text-align: left;
+		&:hover {
+			border: 2px solid $bkgColour;
+		}
+	}
+	a.active {
+		border: 5px solid $bkgColour;
+		pointer-events: none;
+		cursor: default;
+	}
+	// @media #{$toTabletPortrait} {
+	// 	bottom: -5px;
+	// 	li {
+	// 		margin: 0px 1px;
+	// 	}
+	// }
+}	
+
+
+// .slideshow--buttons {
+// 	z-index: 10;
+// 	position: absolute;
+// 	bottom: -40px;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 30px;
+// 	text-align: center;
+// 	li {
+// 		display: inline-block;
+// 		margin: 0px 3px;
+// 		&:last-child {
+// 			margin-right: 0px;
+// 		}
+// 	}
+// 	a {
+// 		display: block;
+// 		border-radius: 10px;
+// 		padding: 10px 25px;
+// 		border: 1px solid $frgColourAlt;
+// 		background: $frgColourAlt;
+// 		font-size: 11px;
+// 		text-transform: uppercase;
+// 		@include transition(0.3s);
+// 		&:hover {
+// 			@include opacity(0.7);
+// 		}
+// 	}
+// 	a.active {
+// 		border: 1px solid $bkgColour;
+// 		background: none;
+// 		pointer-events: none;
+// 		cursor: default;
+// 	}
+// 	@media #{$toTabletPortrait} {
+// 		li {
+// 			margin: 0px 2px;
+// 		}
+// 		a {
+// 			border-radius: 8px;
+// 			padding: 6px 15px;
+// 		}
+// 	}
+// 	@media #{$toMobile} {
+// 		bottom: -38px;
+// 		text-align: left;
+// 		li {
+// 			margin: 0px 1px 0px 0px;
+// 		}
+// 	}
+// }
+
+
+// .slideshow--description {
+// 	z-index: 5;
+// 	position: absolute;
+// 	bottom: -30px;
+// 	width: 100%;
+// 	height: 30px;
+// 	text-align: left;
+// }
+
+
+// .slideshow--schemes-container {
+// 	@media #{$centeringContainerWidthBreak} {
+// 		width: 80%;
+// 		margin: 0px 10%;
+// 	}
+// 	@media #{$toMobileSmall} {
+// 		width: 90%;
+// 		margin: 0px 5%;
+// 	}
+// }

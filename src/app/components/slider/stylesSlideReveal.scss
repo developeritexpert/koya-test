@@ -1,0 +1,56 @@
+	
+@import "../../../shared/shared.scss";
+
+.slide_reveal-- {
+    &split-image {
+        position: relative;
+    
+        img {
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+    
+        > img:last-of-type {
+            height: 100%; width: 100%;
+            top: 0; left: 0;
+            position: absolute;
+        }
+    }
+
+        &cover {
+            position: absolute;
+            top: 0;
+            left: -1%;
+            height: 100%;
+            width: 2%;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+
+            &indicator {
+                position: absolute;
+                top: 0; left: 50%;
+                transform: translateX(-50%);
+                width: 6px; height: 100%;
+                background-color: $menuTextColour;
+            }
+            
+
+            &indicator-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 1;
+                
+                img {
+                    position: absolute;
+                    z-index: -1;
+                    
+                    transform: translate(-50%, -50%);
+                    user-select: none;
+                    -webkit-user-drag: none;
+                }
+            }
+
+}

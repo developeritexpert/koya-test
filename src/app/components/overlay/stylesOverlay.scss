@@ -1,0 +1,59 @@
+
+@import "../../../shared/shared.scss";
+
+.overlay {
+    z-index: $enlargedZIndex;
+    position: fixed;
+    top: $coreMenuHeight;
+    left: 0;
+    width: 100%;
+    height: calc(100% - #{$coreMenuHeight});
+    color: white;
+
+    &.overlay {
+        &__shaded {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        &__full-screen {
+            top: 0;
+            height: 100%;
+        }
+    }
+}
+
+.overlary--menu-cover {
+    position: absolute;
+    top: -$coreMenuHeight; left: 0;
+    width: 100%;
+    height: $coreMenuHeight;
+}
+
+.overlay--close-btn {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    color: inherit;
+
+    @include font-primary;
+    font-size: 18px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 1);
+    opacity: 0.6;
+    transition: all 0.3s ease-out;
+
+    &::after{
+        /* Multiplication symbol (&times;) */
+        content: '\00D7';
+        position: absolute;
+        font-family: serif;
+        font-size: 2em;
+        right: -30px;
+        top: -0.3em;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
