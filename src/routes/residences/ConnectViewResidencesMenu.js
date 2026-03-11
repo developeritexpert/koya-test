@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { selectLevel, selectArea } from './index';
 import { data } from './dataResidences';
 
-
 function ConnectViewResidencesMenu({ selectedLevel, currRotation, selectLevel, selectArea }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSub, setActiveSub] = useState(null);
   const [lastTapped, setLastTapped] = useState(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const levelsData = Object.keys(data.levelGroups)
     .filter(key => key !== 'Type')
@@ -17,7 +17,17 @@ function ConnectViewResidencesMenu({ selectedLevel, currRotation, selectLevel, s
       subLevels: data.levelGroups[key],
     }));
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  // Robust touch detection — covers Windows touch screens in Chrome
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTouchDevice(
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      );
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleOutsideTap = () => setLastTapped(null);
@@ -25,21 +35,25 @@ function ConnectViewResidencesMenu({ selectedLevel, currRotation, selectLevel, s
     return () => document.removeEventListener('pointerdown', handleOutsideTap);
   }, []);
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   const handleSubHover = (subKey) => {
-    if (!('ontouchstart' in window)) {
+    if (!isTouchDevice) {
       setActiveSub(subKey);
       if (data.rotationOverlays[currRotation]?.[subKey]) selectArea(subKey);
     }
   };
 
   const handleSubLeave = () => {
-    if (!('ontouchstart' in window)) {
+    if (!isTouchDevice) {
       setActiveSub(null);
       selectArea(null);
     }
   };
 
   const handleSubPointer = (subKey, target, e) => {
+    if (!isTouchDevice) return; // touch devices only — desktop uses onClick
+
     e.stopPropagation();
     if (lastTapped !== subKey) {
       setActiveSub(subKey);
@@ -54,7 +68,7 @@ function ConnectViewResidencesMenu({ selectedLevel, currRotation, selectLevel, s
   };
 
   const handleSubClick = (subKey, target) => {
-    if (!('ontouchstart' in window)) {
+    if (!isTouchDevice) {
       selectLevel(target);
       setActiveSub(subKey);
       if (data.rotationOverlays[currRotation]?.[subKey]) selectArea(subKey);
@@ -89,10 +103,10 @@ function ConnectViewResidencesMenu({ selectedLevel, currRotation, selectLevel, s
                         onClick={() => handleSubClick(subKey, sub.target)}
                         onPointerDown={(e) => handleSubPointer(subKey, sub.target, e)}
                         style={{ minWidth: 48, minHeight: 48, padding: "8px 0px" }}
-                      > 
-                      <span className="residences--menu__list-span">
-                        {sub.level || sub.title}
-                      </span>
+                      >
+                        <span className="residences--menu__list-span">
+                          {sub.level || sub.title}
+                        </span>
                       </button>
                     </li>
                   );

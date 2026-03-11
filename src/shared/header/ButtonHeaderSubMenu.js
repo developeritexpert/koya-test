@@ -15,12 +15,25 @@ export default function ButtonHeaderSubMenu({ title, options }) {
     let isMenuOpen = false;
 
     const [lastTapped, setLastTapped] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
 
     useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsTouchDevice(
+                'ontouchstart' in window ||
+                navigator.maxTouchPoints > 0 ||
+                navigator.msMaxTouchPoints > 0
+            );
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (!isTouchDevice) return;
         const handleOutsideTap = () => setLastTapped(false);
         document.addEventListener('pointerdown', handleOutsideTap);
         return () => document.removeEventListener('pointerdown', handleOutsideTap);
-    }, []);
+    }, [isTouchDevice]);
 
     const optionsList = [];
     let option;
@@ -80,16 +93,14 @@ export default function ButtonHeaderSubMenu({ title, options }) {
     }
 
     const handlePointerDown = (e) => {
-        if (!('ontouchstart' in window)) return; // touch devices only
+        if (!isTouchDevice) return;
 
-        e.stopPropagation(); // prevent document listener from resetting lastTapped
+        e.stopPropagation();
 
         if (!lastTapped) {
-            // First tap → open submenu, show it
             setLastTapped(true);
             openSubMenu();
         } else {
-            // Second tap → close submenu
             setLastTapped(false);
             closeSubMenu();
         }
@@ -101,8 +112,8 @@ export default function ButtonHeaderSubMenu({ title, options }) {
                 <button
                     className={selected ? 'header--nav__link-selected main--menu__link-wrapper' : 'header--nav__link main--menu__link-wrapper'}
                     ref={btnRef}
-                    onMouseEnter={() => !('ontouchstart' in window) && setTimeout(openSubMenu, 0)}
-                    onClick={() => !('ontouchstart' in window) && openSubMenu()}
+                    onMouseEnter={() => !isTouchDevice && setTimeout(openSubMenu, 0)}
+                    onClick={() => !isTouchDevice && openSubMenu()}
                     onPointerDown={handlePointerDown}
                 >
                     <div className='main--menu__link'>
